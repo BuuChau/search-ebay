@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="410.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="core.SearchController">
+   <children>
+      <Label layoutX="25.0" layoutY="64.0" prefHeight="30.0" prefWidth="180.0" text="Tìm kiếm sản phẩm giá từ : $">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <TextField fx:id="tbPriceFrom" layoutX="210.0" layoutY="64.0" prefHeight="30.0" prefWidth="63.0" />
+      <Label layoutX="280.0" layoutY="68.0" text="Đến $ ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField layoutX="310.0" layoutY="64.0" prefWidth="63.0" prefHeight="30.0" />
+   </children>
+</AnchorPane>
