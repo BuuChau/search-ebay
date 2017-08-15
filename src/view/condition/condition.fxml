@@ -4,12 +4,12 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="410.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="core.SearchController">
+<AnchorPane prefHeight="365.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="core.service.ConditionService">
     <padding>
         <Insets bottom="10" left="10" right="10" top="10" />
     </padding>
 
-    <CheckBox fx:id="cbNew" layoutX="91.0" layoutY="36.0" text="New" />
-    <CheckBox fx:id="cbUser" layoutX="91.0" layoutY="64.0" text="Used" />
-    <CheckBox fx:id="cbNotSpecified" layoutX="91.0" layoutY="92.0" text="Not Specified" />
+    <CheckBox fx:id="cbNew" onAction="#cbNewChecked" layoutX="91.0" layoutY="36.0" text="New" />
+    <CheckBox fx:id="cbUser" onAction="#cbUserChecked" layoutX="91.0" layoutY="64.0" text="Used" />
+    <CheckBox fx:id="cbNotSpecified" onAction="#cbNotSpecifiedChecked" layoutX="91.0" layoutY="92.0" text="Not Specified" />
 </AnchorPane>

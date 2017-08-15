@@ -6,24 +6,27 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 
-<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="core.SearchController">
+<BorderPane prefHeight="400.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="core.SearchController">
    <left>
-      <ScrollPane fitToWidth="true" minHeight="-Infinity" pannable="true" pickOnBounds="false" prefHeight="400.0" prefWidth="200.0" vbarPolicy="ALWAYS" BorderPane.alignment="TOP_LEFT">
+      <ScrollPane fitToWidth="true" pannable="true" pickOnBounds="false" prefHeight="400.0" prefWidth="200.0" vbarPolicy="ALWAYS" BorderPane.alignment="TOP_LEFT">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="200.0">
                <children>
-                   <Button layoutX="1.0" layoutY="0.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="190.0" fx:id="btCondition" onAction="#btConditionClicked" text="Tình Trạng" />
-                   <Button layoutX="1.0" layoutY="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="190.0" fx:id="btPrice" onAction="#btPriceClicked" text="Giá" />
-                   <Button layoutX="1.0" layoutY="60.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="210.0" fx:id="btLocation" onAction="#btLocationClicked" text="Địa điểm" />
-                   <Button layoutX="1.0" layoutY="90.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="190.0" fx:id="btFeedBack" onAction="#btFeedBackClicked" text="FeedBack" />
-                   <Button layoutX="1.0" layoutY="120.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="190.0" fx:id="btSold" onAction="#btSoldClicked" text="Sold" />
-                   <Button layoutX="1.0" layoutY="150.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="190.0" fx:id="btDateFilt" onAction="#btDateFiltClicked" text="Số ngày lọc" />
+                   <Button fx:id="btCondition" layoutX="1.0" layoutY="0.0" mnemonicParsing="false" onAction="#btConditionClicked" prefHeight="30.0" prefWidth="190.0" text="Tình Trạng" />
+                   <Button fx:id="btPrice" layoutX="1.0" layoutY="30.0" mnemonicParsing="false" onAction="#btPriceClicked" prefHeight="30.0" prefWidth="190.0" text="Giá" />
+                   <Button fx:id="btLocation" layoutX="1.0" layoutY="60.0" mnemonicParsing="false" onAction="#btLocationClicked" prefHeight="30.0" prefWidth="210.0" text="Địa điểm" />
+                   <Button fx:id="btFeedBack" layoutX="1.0" layoutY="90.0" mnemonicParsing="false" onAction="#btFeedBackClicked" prefHeight="30.0" prefWidth="190.0" text="FeedBack" />
+                   <Button fx:id="btSold" layoutX="1.0" layoutY="120.0" mnemonicParsing="false" onAction="#btSoldClicked" prefHeight="30.0" prefWidth="190.0" text="Sold" />
+                   <Button fx:id="btDateFilt" layoutX="1.0" layoutY="150.0" mnemonicParsing="false" onAction="#btDateFiltClicked" prefHeight="30.0" prefWidth="190.0" text="Số ngày lọc" />
                </children>
             </AnchorPane>
         </content>
       </ScrollPane>
    </left>
    <right>
-      <Pane prefHeight="400.0" prefWidth="409.0" BorderPane.alignment="CENTER" fx:id="pane" />
+      <Pane fx:id="pane" prefHeight="370.0" prefWidth="800.0" BorderPane.alignment="CENTER" />
    </right>
+   <bottom>
+      <Button mnemonicParsing="false" onAction="#btReset" prefWidth="60" text="Reset" BorderPane.alignment="CENTER" />
+   </bottom>
 </BorderPane>

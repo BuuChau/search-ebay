@@ -5,18 +5,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="410.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="core.SearchController">
+<AnchorPane prefHeight="365.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="core.service.FeedBackService">
     <children>
-        <Label layoutX="10.0" layoutY="63.0" prefHeight="30.0" prefWidth="230.0" text="Sản phẩm có số lượng feedback từ : ">
+        <Label layoutX="0.0" layoutY="63.0" prefHeight="30.0" prefWidth="240.0" text="Sản phẩm có số lượng feedback từ : ">
             <font>
                 <Font size="14.0" />
             </font></Label>
-        <TextField fx:id="tbPriceFrom" layoutX="250.0" layoutY="64.0" prefHeight="30.0" prefWidth="50.0" />
+        <TextField fx:id="tbFeedbackFrom" layoutX="250.0" layoutY="64.0" prefHeight="30.0" prefWidth="50.0" />
         <Label layoutX="310.0" layoutY="68.0" text="Đến ">
             <font>
                 <Font size="14.0" />
             </font>
         </Label>
-        <TextField layoutX="340.0" layoutY="64.0" prefWidth="50.0" prefHeight="30" />
+        <TextField fx:id="tbFeedbackTo" layoutX="340.0" layoutY="64.0" prefWidth="50.0" prefHeight="30" />
     </children>
 </AnchorPane>
