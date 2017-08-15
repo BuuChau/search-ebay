@@ -1,80 +1,97 @@
 package core;
 
-import core.common.InitCommon;
-import core.model.request.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.CheckBox;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
 
 public class SearchController {
 
     @FXML
-    Pane pane;
+    ScrollPane scrollPane;
+    @FXML
+    Pane pnKeyword;
+    @FXML
+    Pane pnSearchIncluding;
+    @FXML
+    Pane pnPrice;
+    @FXML
+    Pane pnBuyFormat;
+    @FXML
+    Pane pnCondition;
+    @FXML
+    Pane pnShowResult;
+    @FXML
+    Pane pnLocation;
+    @FXML
+    Pane pnSortBy;
+    @FXML
+    Pane pnSold;
+    @FXML
+    Pane pnFeedback;
+    @FXML
+    Pane pnDateFilt;
+
+    @FXML
+    VBox Left;
 
     @FXML
     private void initialize() throws IOException {
-        pane.getChildren().clear();
-        Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("../view/condition/condition.fxml"));
-        pane.getChildren().add(newLoadedPane);
-    }
+        Pane newLoadedPane;
+        newLoadedPane=  FXMLLoader.load(getClass().getResource("../view/condition/keywords.fxml"));
+        pnKeyword.getChildren().add(newLoadedPane);
+        //Left.getChildren().add(pnKeyword);
 
-    @FXML
-    private void btConditionClicked(ActionEvent event) throws IOException {
-        pane.getChildren().clear();
-        Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("../view/condition/condition.fxml"));
-        pane.getChildren().add(newLoadedPane);
+        newLoadedPane=  FXMLLoader.load(getClass().getResource("../view/condition/search_including.fxml"));
+        pnSearchIncluding.getChildren().add(newLoadedPane);
+        //Left.getChildren().addAll(pnSearchIncluding);
 
-    }
+        newLoadedPane=  FXMLLoader.load(getClass().getResource("../view/condition/price.fxml"));
+        pnPrice.getChildren().add(newLoadedPane);
+        //Left.getChildren().addAll(pnPrice);
 
-    @FXML
-    private void btPriceClicked(ActionEvent event) throws IOException {
-        pane.getChildren().clear();
-        Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("../view/condition/price.fxml"));
-        pane.getChildren().add(newLoadedPane);
-    }
+        newLoadedPane=  FXMLLoader.load(getClass().getResource("../view/condition/buying_formats.fxml"));
+        pnBuyFormat.getChildren().add(newLoadedPane);
+        //Left.getChildren().addAll(pnBuyFormat);
 
-    @FXML
-    private void btLocationClicked(ActionEvent event) throws IOException {
-        pane.getChildren().clear();
-        Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("../view/condition/location.fxml"));
-        pane.getChildren().add(newLoadedPane);
-    }
+        newLoadedPane=  FXMLLoader.load(getClass().getResource("../view/condition/condition.fxml"));
+        pnCondition.getChildren().add(newLoadedPane);
+        //Left.getChildren().addAll(pnCondition);
 
-    @FXML
-    private void btFeedBackClicked(ActionEvent event) throws IOException {
-        pane.getChildren().clear();
-        Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("../view/condition/feedback.fxml"));
-        pane.getChildren().add(newLoadedPane);
-    }
+        newLoadedPane=  FXMLLoader.load(getClass().getResource("../view/condition/show_results.fxml"));
+        pnShowResult.getChildren().add(newLoadedPane);
+        //Left.getChildren().addAll(pnShowResult);
 
-    @FXML
-    private void btSoldClicked(ActionEvent event) throws IOException {
-        pane.getChildren().clear();
-        Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("../view/condition/sold.fxml"));
-        pane.getChildren().add(newLoadedPane);
-    }
+        newLoadedPane=  FXMLLoader.load(getClass().getResource("../view/condition/location.fxml"));
+        pnLocation.getChildren().add(newLoadedPane);
+        //Left.getChildren().addAll(pnLocation);
 
-    @FXML
-    private void btDateFiltClicked(ActionEvent event) throws IOException {
-        pane.getChildren().clear();
-        Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("../view/condition/datefilt.fxml"));
-        pane.getChildren().add(newLoadedPane);
+        newLoadedPane=  FXMLLoader.load(getClass().getResource("../view/condition/sort_by.fxml"));
+        pnSortBy.getChildren().add(newLoadedPane);
+        //Left.getChildren().addAll(pnSortBy);
+
+        newLoadedPane=  FXMLLoader.load(getClass().getResource("../view/condition/sold.fxml"));
+        pnSold.getChildren().add(newLoadedPane);
+        //Left.getChildren().addAll(pnSold);
+
+        newLoadedPane=  FXMLLoader.load(getClass().getResource("../view/condition/feedback.fxml"));
+        pnFeedback.getChildren().add(newLoadedPane);
+        //Left.getChildren().addAll(pnFeedback);
+
+        newLoadedPane=  FXMLLoader.load(getClass().getResource("../view/condition/datefilt.fxml"));
+        pnDateFilt.getChildren().add(newLoadedPane);
+        Left.getChildren().addAll(pnKeyword,pnSearchIncluding,pnPrice,pnBuyFormat,pnCondition,pnShowResult,pnLocation,pnSortBy,pnSold,pnFeedback,pnDateFilt);
+
+        scrollPane.setContent(Left);
+        scrollPane.setFitToHeight(true);
     }
 
     @FXML
     private void btReset(ActionEvent event) throws IOException {
-        InitCommon.conditions = new HashSet<>();
-        InitCommon.dateFilt = null;
-        InitCommon.feedback = new Feedback();
-        InitCommon.locations = new HashSet<>();
-        InitCommon.price = new Price();
-        InitCommon.sold = null;
         initialize();
     }
 }

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="300.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+      <Label layoutX="41.0" layoutY="25.0" text="Show results">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <CheckBox fx:id="cbListing" layoutX="41.0" layoutY="82.0" mnemonicParsing="false" text="Listings" />
+      <ComboBox layoutX="218.0" layoutY="78.0" prefWidth="150.0" promptText="Ending within" />
+      <ComboBox layoutX="390.0" layoutY="78.0" prefWidth="150.0" promptText="1 hour" />
+      <CheckBox layoutX="41.0" layoutY="109.0" mnemonicParsing="false" text="Number of bids from" />
+      <TextField layoutX="219.0" layoutY="105.0" />
+      <Label layoutX="372.0" layoutY="109.0" text="To" />
+      <TextField layoutX="391.0" layoutY="105.0" />
+      <CheckBox layoutX="41.0" layoutY="138.0" mnemonicParsing="false" text="Multiple item listings from" />
+      <TextField layoutX="219.0" layoutY="134.0" />
+      <Label layoutX="372.0" layoutY="138.0" text="To" />
+      <TextField layoutX="391.0" layoutY="134.0" />
+      <CheckBox layoutX="41.0" layoutY="166.0" mnemonicParsing="false" text="Sale items" />
+      <Label layoutX="41.0" layoutY="222.0" text="Shipping options">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <CheckBox layoutX="42.0" layoutY="271.0" mnemonicParsing="false" text=" Free international shipping" />
+</AnchorPane>

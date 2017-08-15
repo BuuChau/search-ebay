@@ -34,7 +34,7 @@ public class MainController {
     }
 
     public static void main(String[] args) {
-        runSearch();
+        //runSearch();
     }
 
     private static void runSearch(){

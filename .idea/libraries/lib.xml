@@ -1,8 +1,8 @@
 <component name="libraryTable">
-  <library name="finding">
+  <library name="lib">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/finding.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/log4j-1.2.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/finding.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
