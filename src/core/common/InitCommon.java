@@ -5,6 +5,7 @@ import core.model.request.condition.Condition;
 import core.model.request.datefilt.DateFilt;
 import core.model.request.feedback.Feedback;
 import core.model.request.format.BuyFormat;
+import core.model.request.location.Location;
 import core.model.request.price.Price;
 import core.model.request.sort.ResultPage;
 import core.model.request.sort.Sold;
@@ -22,6 +23,7 @@ public class InitCommon {
     public static Price price = new Price();
     public static Set<BuyFormat> formats = new HashSet<>();
     public static Set<Condition> conditions = new HashSet<>();
+    public static Set<Location> locations = new HashSet<>();
     public static SortBy sortBy = null;
     public static ResultPage resultPage = null;
     public static Sold sold = null;
