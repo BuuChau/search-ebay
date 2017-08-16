@@ -1,26 +1,539 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="400.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="core.SearchController">
-       <ScrollPane fx:id="scrollPane">
-           <content>
-               <VBox fx:id="Left" prefHeight="400.0" prefWidth="1000.0">
-                       <Pane fx:id="pnKeyword" layoutY="0.0" prefHeight="100.0" prefWidth="1000.0" />
-                       <Pane fx:id="pnSearchIncluding" layoutY="110.0" prefHeight="150.0" prefWidth="1000.0" />
-                       <Pane fx:id="pnPrice" layoutY="270" prefHeight="100.0" prefWidth="1000.0" />
-                       <Pane fx:id="pnBuyFormat" layoutY="380" prefHeight="130.0" prefWidth="1000.0" />
-                       <Pane fx:id="pnCondition" layoutY="620" prefHeight="130.0" prefWidth="1000.0" />
-                       <Pane fx:id="pnShowResult" layoutY="930" prefHeight="300.0" prefWidth="1000.0" />
-                       <Pane fx:id="pnLocation" layoutY="1060" prefHeight="120.0" prefWidth="1000.0" />
-                       <Pane fx:id="pnSortBy" layoutY="1260" prefHeight="190.0" prefWidth="1000.0" />
-                       <Pane fx:id="pnSold" layoutY="1320" prefHeight="50.0" prefWidth="1000.0" />
-                       <Pane fx:id="pnFeedback" layoutY="1380" prefHeight="50.0" prefWidth="1000.0" />
-                       <Pane fx:id="pnDateFilt" layoutY="1440" prefHeight="50.0" prefWidth="1000.0" />
-               </VBox>
-           </content>
-       </ScrollPane>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.geometry.Insets?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="core.SearchController">
+    <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" prefHeight="560.0" prefWidth="1000.0" vbarPolicy="ALWAYS">
+        <content>
+            <VBox fx:id="vBox">
+                <AnchorPane prefHeight="100.0">
+                    <Label layoutX="25.0" layoutY="15.0" text="CATEGORY">
+                        <font>
+                            <Font size="18.0"/>
+                        </font>
+                    </Label>
+                    <Label layoutX="50.0" layoutY="55.0" text="Category">
+                        <font>
+                            <Font size="14.0"/>
+                        </font>
+                    </Label>
+                    <ComboBox fx:id="cbbCategory" layoutX="130.0" layoutY="50.0" prefHeight="30.0" prefWidth="250.0">
+                        <items>
+                            <FXCollections fx:factory="observableArrayList">
+                                <String fx:id="xxx" fx:value="All Categories"/>
+                                <String fx:value="Antiques"/>
+                                <String fx:value="Art"/>
+                                <String fx:value="Baby"/>
+                                <String fx:value="Books"/>
+                                <String fx:value="Business &amp; Industrial"/>
+                                <String fx:value="Cameras &amp; Photo"/>
+                                <String fx:value="Cell Phones &amp; Accessories"/>
+                                <String fx:value="Clothing, Shoes &amp; Accessories"/>
+                                <String fx:value="Coins &amp; Paper Money"/>
+                                <String fx:value="Collectibles"/>
+                                <String fx:value="Computers/Tablets &amp; Networking"/>
+                                <String fx:value="Consumer Electronics"/>
+                                <String fx:value="Crafts"/>
+                                <String fx:value="Dolls &amp; Bears"/>
+                                <String fx:value="DVDs &amp; Movies"/>
+                                <String fx:value="Entertainment Memorabilia"/>
+                                <String fx:value="Gift Cards &amp; Coupons"/>
+                                <String fx:value="Health &amp; Beauty"/>
+                                <String fx:value="Home &amp; Garden"/>
+                                <String fx:value="Jewelry &amp; Watches"/>
+                                <String fx:value="Music"/>
+                                <String fx:value="Musical Instruments &amp; Gear"/>
+                                <String fx:value="Pet Supplies"/>
+                                <String fx:value="Pottery &amp; Glass"/>
+                                <String fx:value="Real Estate"/>
+                                <String fx:value="Specialty Services"/>
+                                <String fx:value="Sporting Goods"/>
+                                <String fx:value="Sports Mem, Cards &amp; Fan Shop"/>
+                                <String fx:value="Stamps"/>
+                                <String fx:value="Toys &amp; Hobbies"/>
+                                <String fx:value="Travel"/>
+                                <String fx:value="Video Games &amp; Consoles"/>
+                                <String fx:value="Everything Else"/>
+                            </FXCollections>
+                        </items>
+                    </ComboBox>
+                </AnchorPane>
+
+                <!--<AnchorPane layoutY="110.0" prefHeight="150.0" >
+                    <Label layoutX="30.0" layoutY="15.0" prefHeight="30.0" text="Search including">
+                        <font>
+                            <Font size="18.0" />
+                        </font>
+                    </Label>
+
+                    <CheckBox fx:id="cbTitleDescription" layoutX="30.0" layoutY="63.0" text="Title and description">
+                        <font>
+                            <Font size="14.0" />
+                        </font></CheckBox>
+                    <CheckBox fx:id="cbCompleteListing" layoutX="30.0" layoutY="91.0" text="Completed listings">
+                        <font>
+                            <Font size="14.0" />
+                        </font></CheckBox>
+                    <CheckBox fx:id="cbSoldListing" layoutX="30.0" layoutY="119.0" text="Sold listings">
+                        <font>
+                            <Font size="14.0" />
+                        </font></CheckBox>
+                </AnchorPane>-->
+
+                <AnchorPane prefHeight="80.0">
+                    <Label layoutX="25.0" layoutY="0.0" text="PRICE">
+                        <font>
+                            <Font size="18.0"/>
+                        </font>
+                    </Label>
+                    <CheckBox layoutX="50.0" layoutY="35.0" mnemonicParsing="false" text="Tìm kiếm sản phẩn từ : ">
+                        <font>
+                            <Font size="14.0"/>
+                        </font>
+                    </CheckBox>
+                    <TextField fx:id="tfPriceFrom" layoutX="220.0" layoutY="30.0" prefHeight="30.0" prefWidth="128.0">
+                        <font>
+                            <Font size="14.0"/>
+                        </font>
+                    </TextField>
+                    <Label layoutX="350.0" layoutY="35.0" text="Đến ">
+                        <font>
+                            <Font size="14.0"/>
+                        </font>
+                    </Label>
+                    <TextField fx:id="tfPriceTo" layoutX="378.0" layoutY="30.0" prefHeight="30.0" prefWidth="128.0">
+                        <font>
+                            <Font size="14.0"/>
+                        </font>
+                    </TextField>
+                </AnchorPane>
+
+                <AnchorPane prefHeight="70.0">
+                    <Label layoutX="25.0" layoutY="0.0" text="BUY FORMAT">
+                        <font>
+                            <Font size="18.0"/>
+                        </font>
+                    </Label>
+                    <CheckBox fx:id="cbAuction" onAction="#cbAuctionChecked" layoutX="50.0" layoutY="40.0" text="Auction">
+                        <font>
+                            <Font size="14.0"/>
+                        </font>
+                    </CheckBox>
+                    <CheckBox fx:id="cbBuyItNow" layoutX="50.0" onAction="#cbBuyItNowChecked" layoutY="70.0" text="Buy It Now">
+                        <font>
+                            <Font size="14.0"/>
+                        </font>
+                    </CheckBox>
+                </AnchorPane>
+
+                <AnchorPane prefHeight="130.0">
+                    <Label layoutX="25.0" layoutY="20.0" text="CONDITION">
+                        <font>
+                            <Font size="18.0"/>
+                        </font>
+                    </Label>
+
+                    <CheckBox fx:id="cbNew" layoutX="50.0" onAction="#cbNewChecked" layoutY="50.0" text="New">
+                        <font>
+                            <Font size="14.0"/>
+                        </font>
+                    </CheckBox>
+                    <CheckBox fx:id="cbUser" layoutX="50.0" onAction="#cbUserChecked" layoutY="80.0" text="Used">
+                        <font>
+                            <Font size="14.0"/>
+                        </font>
+                    </CheckBox>
+                    <CheckBox fx:id="cbNotSpecified" layoutX="50.0" onAction="#cbNotSpecifiedChecked" layoutY="110.0" text="Not Specified">
+                        <font>
+                            <Font size="14.0"/>
+                        </font>
+                    </CheckBox>
+                </AnchorPane>
+
+                <!--<AnchorPane prefHeight="300.0" layoutY="930">
+                    <Label layoutX="41.0" layoutY="25.0" text="Show results">
+                        <font>
+                            <Font size="18.0"/>
+                        </font>
+                    </Label>
+                    <CheckBox fx:id="cbListing" layoutX="41.0" layoutY="82.0" mnemonicParsing="false" text="Listings"/>
+                    <ComboBox layoutX="218.0" layoutY="78.0" prefWidth="150.0">
+                        <items>
+                            <FXCollections fx:factory="observableArrayList">
+                                <String fx:value="Ending within" />
+                                <String fx:value="Ending in more than" />
+                                <String fx:value="Started within" />
+                            </FXCollections>
+                        </items>
+                    </ComboBox>
+                    <ComboBox layoutX="390.0" layoutY="78.0" prefWidth="150.0">
+                        <items>
+                            <FXCollections fx:factory="observableArrayList">
+                                <String fx:value="1 hour" />
+                                <String fx:value="2 hour" />
+                                <String fx:value="3 hour" />
+                                <String fx:value="4 hour" />
+                                <String fx:value="5 hour" />
+                                <String fx:value="12 hour" />
+                                <String fx:value="2 day" />
+                                <String fx:value="3 day" />
+                                <String fx:value="4 day" />
+                                <String fx:value="5 day" />
+                                <String fx:value="6 day" />
+                                <String fx:value="7 day" />
+
+                            </FXCollections>
+                        </items>
+                    </ComboBox>
+                    <CheckBox layoutX="41.0" layoutY="109.0" mnemonicParsing="false" text="Number of bids from"/>
+                    <TextField layoutX="219.0" layoutY="105.0"/>
+                    <Label layoutX="372.0" layoutY="109.0" text="To"/>
+                    <TextField layoutX="391.0" layoutY="105.0"/>
+                    <CheckBox layoutX="41.0" layoutY="138.0" mnemonicParsing="false" text="Multiple item listings from"/>
+                    <TextField layoutX="219.0" layoutY="134.0"/>
+                    <Label layoutX="372.0" layoutY="138.0" text="To"/>
+                    <TextField layoutX="391.0" layoutY="134.0"/>
+                    <CheckBox layoutX="41.0" layoutY="166.0" mnemonicParsing="false" text="Sale items"/>
+                    <Label layoutX="41.0" layoutY="222.0" text="Shipping options">
+                        <font>
+                            <Font size="18.0"/>
+                        </font>
+                    </Label>
+                    <CheckBox layoutX="42.0" layoutY="271.0" mnemonicParsing="false" text=" Free international shipping"/>
+                </AnchorPane>-->
+
+                <AnchorPane prefHeight="120.0">
+                    <padding>
+                        <Insets bottom="10" left="10" right="10" top="10"/>
+                    </padding>
+                    <Label layoutX="25.0" layoutY="15.0" text="LOCATION">
+                        <font>
+                            <Font size="18.0"/>
+                        </font>
+                    </Label>
+                    <RadioButton layoutX="50.0" layoutY="50.0" mnemonicParsing="false" text=" Located in">
+                        <font>
+                            <Font size="14.0"/>
+                        </font>
+                    </RadioButton>
+                    <ScrollPane layoutX="220.0" layoutY="50.0" prefHeight="100.0" hbarPolicy="NEVER"
+                                vbarPolicy="ALWAYS">
+                        <content>
+                            <VBox>
+                                <CheckBox fx:id="1" text="United States"/>
+                                <CheckBox fx:id="2" text="Australia"/>
+                                <CheckBox fx:id="3" text="Canada"/>
+                                <CheckBox fx:id="4" text="United Kingdom"/>
+                                <CheckBox fx:id="5" text="Afghanistan"/>
+                                <CheckBox fx:id="6" text="Albania"/>
+                                <CheckBox fx:id="7" text="Algeria"/>
+                                <CheckBox fx:id="8" text="American Samoa"/>
+                                <CheckBox fx:id="9" text="Andorra"/>
+                                <CheckBox fx:id="10" text="Angola"/>
+                                <CheckBox fx:id="11" text="Anguilla"/>
+                                <CheckBox fx:id="12" text="Antigua and Barbuda"/>
+                                <CheckBox fx:id="13" text="Argentina"/>
+                                <CheckBox fx:id="14" text="Armenia"/>
+                                <CheckBox fx:id="15" text="Aruba"/>
+                                <CheckBox fx:id="16" text="Australia"/>
+                                <CheckBox fx:id="17" text="Austria"/>
+                                <CheckBox fx:id="18" text="Azerbaijan Republic"/>
+                                <CheckBox fx:id="19" text="Bahamas"/>
+                                <CheckBox fx:id="20" text="Bahrain"/>
+                                <CheckBox fx:id="21" text="Bangladesh"/>
+                                <CheckBox fx:id="22" text="Barbados"/>
+                                <CheckBox fx:id="23" text=">Belarus"/>
+                                <CheckBox fx:id="24" text="Belgium"/>
+                                <CheckBox fx:id="25" text="Belize"/>
+                                <CheckBox fx:id="26" text="Benin"/>
+                                <CheckBox fx:id="27" text="Bermuda"/>
+                                <CheckBox fx:id="28" text="Bhutan"/>
+                                <CheckBox fx:id="29" text="Bolivia"/>
+                                <CheckBox fx:id="30" text="Bosnia and Herzegovina"/>
+                                <CheckBox fx:id="31" text="Botswana"/>
+                                <CheckBox fx:id="32" text="Brazil"/>
+                                <CheckBox fx:id="33" text="British Virgin Islands"/>
+                                <CheckBox fx:id="34" text="Brunei Darussalam"/>
+                                <CheckBox fx:id="35" text="Bulgaria"/>
+                                <CheckBox fx:id="36" text="Burkina Faso"/>
+                                <CheckBox fx:id="37" text="Burma"/>
+                                <CheckBox fx:id="38" text="Burundi"/>
+                                <CheckBox fx:id="39" text="Cambodia"/>
+                                <CheckBox fx:id="40" text="Cameroon"/>
+                                <CheckBox fx:id="41" text="Canada"/>
+                                <CheckBox fx:id="42" text="Cape Verde Islands"/>
+                                <CheckBox fx:id="43" text="Cayman Islands"/>
+                                <CheckBox fx:id="44" text="Central African Republic"/>
+                                <CheckBox fx:id="45" text="Chad"/>
+                                <CheckBox fx:id="46" text="Chile"/>
+                                <CheckBox fx:id="47" text="China"/>
+                                <CheckBox fx:id="48" text="Colombia"/>
+                                <CheckBox fx:id="49" text="Comoros"/>
+                                <CheckBox fx:id="50" text="Congo, Democratic Republic of the"/>
+                                <CheckBox fx:id="51" text="Congo, Republic of the"/>
+                                <CheckBox fx:id="52" text="Cook Islands"/>
+                                <CheckBox fx:id="53" text="Costa Rica"/>
+                                <CheckBox fx:id="54" text="Cote d Ivoire (Ivory Coast)"/>
+                                <CheckBox fx:id="55" text="Croatia, Republic of"/>
+                                <CheckBox fx:id="56" text="Cyprus"/>
+                                <CheckBox fx:id="57" text="Czech Republic"/>
+                                <CheckBox fx:id="58" text="Denmark"/>
+                                <CheckBox fx:id="59" text="Djibouti"/>
+                                <CheckBox fx:id="60" text="Dominica"/>
+                                <CheckBox fx:id="61" text="Dominican Republic"/>
+                                <CheckBox fx:id="62" text="Ecuador"/>
+                                <CheckBox fx:id="63" text="Egypt"/>
+                                <CheckBox fx:id="64" text="El Salvador"/>
+                                <CheckBox fx:id="65" text="Equatorial Guinea"/>
+                                <CheckBox fx:id="66" text="Eritrea"/>
+                                <CheckBox fx:id="67" text="Estonia"/>
+                                <CheckBox fx:id="68" text="Ethiopia"/>
+                                <CheckBox fx:id="69" text="Falkland Islands (Islas Malvinas)"/>
+                                <CheckBox fx:id="70" text="Fiji"/>
+                                <CheckBox fx:id="71" text="Finland"/>
+                                <CheckBox fx:id="72" text="France"/>
+                                <CheckBox fx:id="73" text="French Guiana"/>
+                                <CheckBox fx:id="74" text="French Polynesia"/>
+                                <CheckBox fx:id="75" text="Gabon Republic"/>
+                                <CheckBox fx:id="76" text="Gambia"/>
+                                <CheckBox fx:id="77" text="Georgia"/>
+                                <CheckBox fx:id="78" text="Germany"/>
+                                <CheckBox fx:id="79" text="Ghana"/>
+                                <CheckBox fx:id="80" text="Gibraltar"/>
+                                <CheckBox fx:id="81" text="Greece"/>
+                                <CheckBox fx:id="82" text="Greenland"/>
+                                <CheckBox fx:id="83" text="Grenada"/>
+                                <CheckBox fx:id="84" text="Guadeloupe"/>
+                                <CheckBox fx:id="85" text="Guam"/>
+                                <CheckBox fx:id="86" text="Guatemala"/>
+                                <CheckBox fx:id="87" text="Guernsey"/>
+                                <CheckBox fx:id="88" text="Guinea"/>
+                                <CheckBox fx:id="89" text="Guinea-Bissau"/>
+                                <CheckBox fx:id="90" text="Guyana"/>
+                                <CheckBox fx:id="91" text="Haiti"/>
+                                <CheckBox fx:id="92" text="Honduras"/>
+                                <CheckBox fx:id="93" text="Hong Kong"/>
+                                <CheckBox fx:id="94" text="Hungary"/>
+                                <CheckBox fx:id="95" text="Iceland"/>
+                                <CheckBox fx:id="96" text="India"/>
+                                <CheckBox fx:id="97" text="Indonesia"/>
+                                <CheckBox fx:id="98" text="Ireland"/>
+                                <CheckBox fx:id="99" text="Israel"/>
+                                <CheckBox fx:id="100" text="Italy"/>
+                                <CheckBox fx:id="101" text="Jamaica"/>
+                                <CheckBox fx:id="102" text="Japan"/>
+                                <CheckBox fx:id="103" text="Jersey"/>
+                                <CheckBox fx:id="104" text="Jordan"/>
+                                <CheckBox fx:id="105" text="Kazakhstan"/>
+                                <CheckBox fx:id="106" text="Kenya"/>
+                                <CheckBox fx:id="107" text="Kiribati"/>
+                                <CheckBox fx:id="108" text="Korea, South"/>
+                                <CheckBox fx:id="109" text="Kuwait"/>
+                                <CheckBox fx:id="110" text="Kyrgyzstan"/>
+                                <CheckBox fx:id="111" text="Laos"/>
+                                <CheckBox fx:id="112" text="Latvia"/>
+                                <CheckBox fx:id="113" text="Lebanon"/>
+                                <CheckBox fx:id="114" text="Liechtenstein"/>
+                                <CheckBox fx:id="115" text="Lithuania"/>
+                                <CheckBox fx:id="116" text="Luxembourg"/>
+                                <CheckBox fx:id="117" text="Macau"/>
+                                <CheckBox fx:id="118" text="Macedonia"/>
+                                <CheckBox fx:id="119" text="Madagascar"/>
+                                <CheckBox fx:id="120" text="Malawi"/>
+                                <CheckBox fx:id="121" text="Malaysia"/>
+                                <CheckBox fx:id="122" text="Maldives"/>
+                                <CheckBox fx:id="123" text="Mali"/>
+                                <CheckBox fx:id="124" text="Malta"/>
+                                <CheckBox fx:id="125" text="Marshall Islands"/>
+                                <CheckBox fx:id="126" text="Martinique"/>
+                                <CheckBox fx:id="127" text="Mauritania"/>
+                                <CheckBox fx:id="128" text="Mauritius"/>
+                                <CheckBox fx:id="129" text="Mayotte"/>
+                                <CheckBox fx:id="130" text="Mexico"/>
+                                <CheckBox fx:id="131" text="Micronesia"/>
+                                <CheckBox fx:id="132" text="Moldova"/>
+                                <CheckBox fx:id="133" text="Monaco"/>
+                                <CheckBox fx:id="134" text="Mongolia"/>
+                                <CheckBox fx:id="135" text="Montenegro"/>
+                                <CheckBox fx:id="136" text="Montserrat"/>
+                                <CheckBox fx:id="137" text="Morocco"/>
+                                <CheckBox fx:id="138" text="Mozambique"/>
+                                <CheckBox fx:id="139" text="Namibia"/>
+                                <CheckBox fx:id="140" text="Nauru"/>
+                                <CheckBox fx:id="141" text="Nepal"/>
+                                <CheckBox fx:id="142" text="Netherlands"/>
+                                <CheckBox fx:id="143" text="Netherlands Antilles"/>
+                                <CheckBox fx:id="144" text="New Caledonia"/>
+                                <CheckBox fx:id="145" text="New Zealand"/>
+                                <CheckBox fx:id="146" text="Nicaragua"/>
+                                <CheckBox fx:id="147" text="Niger"/>
+                                <CheckBox fx:id="148" text="Nigeria"/>
+                                <CheckBox fx:id="149" text="Niue"/>
+                                <CheckBox fx:id="150" text="Norway"/>
+                                <CheckBox fx:id="151" text="Oman"/>
+                                <CheckBox fx:id="152" text="Pakistan"/>
+                                <CheckBox fx:id="153" text="Palau"/>
+                                <CheckBox fx:id="154" text="Panama"/>
+                                <CheckBox fx:id="155" text="Papua New Guinea"/>
+                                <CheckBox fx:id="156" text="Paraguay"/>
+                                <CheckBox fx:id="157" text="Peru"/>
+                                <CheckBox fx:id="158" text="Philippines"/>
+                                <CheckBox fx:id="159" text="Poland"/>
+                                <CheckBox fx:id="160" text="Portugal"/>
+                                <CheckBox fx:id="161" text="Puerto Rico"/>
+                                <CheckBox fx:id="162" text="Qatar"/>
+                                <CheckBox fx:id="163" text="Reunion"/>
+                                <CheckBox fx:id="164" text="Romania"/>
+                                <CheckBox fx:id="165" text="Russian Federation"/>
+                                <CheckBox fx:id="166" text="Rwanda"/>
+                                <CheckBox fx:id="167" text="Saint Helena"/>
+                                <CheckBox fx:id="168" text="Saint Kitts-Nevis"/>
+                                <CheckBox fx:id="169" text="Saint Lucia"/>
+                                <CheckBox fx:id="170" text="Saint Pierre and Miquelon"/>
+                                <CheckBox fx:id="171" text="Saint Vincent and the Grenadines"/>
+                                <CheckBox fx:id="172" text="San Marino"/>
+                                <CheckBox fx:id="173" text="Saudi Arabia"/>
+                                <CheckBox fx:id="174" text="Senegal"/>
+                                <CheckBox fx:id="175" text="Serbia"/>
+                                <CheckBox fx:id="176" text="Seychelles"/>
+                                <CheckBox fx:id="177" text="Sierra Leone"/>
+                                <CheckBox fx:id="178" text="Singapore"/>
+                                <CheckBox fx:id="179" text="Slovakia"/>
+                                <CheckBox fx:id="180" text="Slovenia"/>
+                                <CheckBox fx:id="181" text="Solomon Islands"/>
+                                <CheckBox fx:id="182" text="Somalia"/>
+                                <CheckBox fx:id="183" text="South Africa"/>
+                                <CheckBox fx:id="184" text="Spain"/>
+                                <CheckBox fx:id="185" text="Sri Lanka"/>
+                                <CheckBox fx:id="186" text="Suriname"/>
+                                <CheckBox fx:id="187" text="Swaziland"/>
+                                <CheckBox fx:id="188" text="Sweden"/>
+                                <CheckBox fx:id="189" text="Switzerland"/>
+                                <CheckBox fx:id="190" text="Taiwan"/>
+                                <CheckBox fx:id="191" text="Tajikistan"/>
+                                <CheckBox fx:id="192" text="Tanzania"/>
+                                <CheckBox fx:id="193" text="Thailand"/>
+                                <CheckBox fx:id="194" text="Togo"/>
+                                <CheckBox fx:id="195" text="Tonga"/>
+                                <CheckBox fx:id="196" text="Trinidad and Tobago"/>
+                                <CheckBox fx:id="197" text="Tunisia"/>
+                                <CheckBox fx:id="198" text="Turkey"/>
+                                <CheckBox fx:id="199" text="Turkmenistan"/>
+                                <CheckBox fx:id="200" text="Turks and Caicos Islands"/>
+                                <CheckBox fx:id="201" text="Tuvalu"/>
+                                <CheckBox fx:id="202" text="Uganda"/>
+                                <CheckBox fx:id="203" text="Ukraine"/>
+                                <CheckBox fx:id="204" text="United Arab Emirates"/>
+                                <CheckBox fx:id="205" text="United Kingdom"/>
+                                <CheckBox fx:id="206" text="United States"/>
+                                <CheckBox fx:id="207" text="Uruguay"/>
+                                <CheckBox fx:id="208" text="Uzbekistan"/>
+                                <CheckBox fx:id="209" text="Vanuatu"/>
+                                <CheckBox fx:id="210" text="Vatican City State"/>
+                                <CheckBox fx:id="211" text="Venezuela"/>
+                                <CheckBox fx:id="212" text="Vietnam"/>
+                                <CheckBox fx:id="213" text="Virgin Islands (U.S)"/>
+                                <CheckBox fx:id="214" text="Wallis and Futuna"/>
+                                <CheckBox fx:id="215" text="Western Sahara"/>
+                                <CheckBox fx:id="216" text="Western Samoa"/>
+                                <CheckBox fx:id="217" text="Yemen"/>
+                                <CheckBox fx:id="218" text="Zambia"/>
+                                <CheckBox fx:id="219" text="Zimbabwe"/>
+                            </VBox>
+                        </content>
+                    </ScrollPane>
+                </AnchorPane>
+
+                <AnchorPane prefHeight="190.0">
+                    <Label layoutX="25.0" layoutY="15.0" text="SORT BY">
+                        <font>
+                            <Font size="18.0"/>
+                        </font>
+                    </Label>
+                    <Label layoutX="50.0" layoutY="55.0" text="Sort by">
+                        <font>
+                            <Font size="14.0"/>
+                        </font>
+                    </Label>
+                    <ComboBox fx:id="cbbSortBy" layoutX="170.0" layoutY="50.0" prefWidth="150.0">
+                        <items>
+                            <FXCollections fx:factory="observableArrayList">
+                                <String fx:value="Best Match"/>
+                                <String fx:value="Time: newly listed"/>
+                                <String fx:value="Price + Shipping: lowest first"/>
+                                <String fx:value="Price + Shipping: highest first"/>
+                                <String fx:value="Price: highest first"/>
+                            </FXCollections>
+                        </items>
+                    </ComboBox>
+                    <Label layoutX="50.0" layoutY="95.0" text="Results per page">
+                        <font>
+                            <Font size="14.0"/>
+                        </font>
+                    </Label>
+                    <ComboBox fx:id="cbbResultPerPage" layoutX="170.0" layoutY="90.0" prefWidth="150.0">
+                        <items>
+                            <FXCollections fx:factory="observableArrayList">
+                                <String fx:value="25"/>
+                                <String fx:value="50"/>
+                                <String fx:value="100"/>
+                                <String fx:value="200"/>
+                            </FXCollections>
+                        </items>
+                    </ComboBox>
+
+                    <Label layoutX="50.0" layoutY="135.0" prefHeight="30.0" prefWidth="110.0" text="Sold lớn hơn : ">
+                        <font>
+                            <Font size="14.0"/>
+                        </font>
+                    </Label>
+                    <TextField fx:id="tfSold" layoutX="170.0" layoutY="130.0" prefHeight="30.0" prefWidth="190.0">
+                        <font>
+                            <Font size="14.0"/>
+                        </font>
+                    </TextField>
+
+                    <Label layoutX="50.0" layoutY="171.0" prefHeight="30.0" text="Sản phẩm có số lượng feedback từ : ">
+                        <font>
+                            <Font size="14.0"/>
+                        </font>
+                    </Label>
+                    <TextField fx:id="tfFeedbackFrom" layoutX="300.0" layoutY="170.0" prefHeight="30.0"
+                               prefWidth="200.0">
+                        <font>
+                            <Font size="14.0"/>
+                        </font>
+                    </TextField>
+                    <Label layoutX="510.0" layoutY="171.0" prefHeight="30.0" text="Đến ">
+                        <font>
+                            <Font size="14.0"/>
+                        </font>
+                    </Label>
+                    <TextField fx:id="tfFeedbackTo" layoutX="540.0" layoutY="170.0" prefHeight="30" prefWidth="200.0">
+                        <font>
+                            <Font size="14.0"/>
+                        </font>
+                    </TextField>
+                    <Label layoutX="50.0" layoutY="215.0" prefHeight="30.0" prefWidth="96.0" text="Số ngày lọc : ">
+                        <font>
+                            <Font size="14.0"/>
+                        </font>
+                    </Label>
+                    <TextField fx:id="tfDateFilt" layoutX="170.0" layoutY="210.0" prefHeight="30.0" prefWidth="190.0">
+                        <font>
+                            <Font size="14.0"/>
+                        </font>
+                    </TextField>
+                </AnchorPane>
+            </VBox>
+        </content>
+    </ScrollPane>
 </AnchorPane>

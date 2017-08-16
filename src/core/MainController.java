@@ -35,6 +35,7 @@ public class MainController {
 
     public static void main(String[] args) {
         //runSearch();
+        runSearchCondition();
     }
 
     private static void runSearch(){
@@ -48,25 +49,7 @@ public class MainController {
 
             //create a service client
             FindingServicePortType serviceClient = FindingServiceClientFactory.getServiceClient(config);
-//
-//            //create request object
-//            FindItemsAdvancedRequest request = new FindItemsAdvancedRequest();
-//            //set request parameters
-//            request.setKeywords("harry potter phoenix");
-//            // Add condition
-//            AspectFilter aspectFilter = new AspectFilter();
-//            aspectFilter.setAspectName("LH_LocatedIn");
-//            aspectFilter.getAspectValueName().add("Ukraine");
-//            request.getAspectFilter().add(aspectFilter);
-//
-//
-//            PaginationInput pi = new PaginationInput();
-//            pi.setEntriesPerPage(2);
-//            request.setPaginationInput(pi);
-//
-//            //call service
-//            FindItemsAdvancedResponse result = serviceClient.findItemsAdvanced(request);
-//
+
             FindItemsAdvancedRequest request = new FindItemsAdvancedRequest();
             request.setKeywords("watch");
             AspectFilter aspectFilter = new AspectFilter();
@@ -89,6 +72,54 @@ public class MainController {
             System.out.println("Found " + result.getSearchResult().getCount() + " items." );
             List<SearchItem> items = result.getSearchResult().getItem();
             for(SearchItem item : items) {System.out.println(item.getTitle());}
+        } catch (Exception ex) {
+            // handle exception if any
+            ex.printStackTrace();
+        }
+    }
+
+    private static void runSearchCondition(){
+        try {
+            // initialize service end-point configuration
+            ClientConfig config = new ClientConfig();
+            // endpoint address can be overwritten here, by default, production address is used,
+            // to enable sandbox endpoint, just uncomment the following line
+            //config.setEndPointAddress("http://svcs.sandbox.ebay.com/services/search/FindingService/v1");
+            config.setApplicationId("CUONGNGU-Searcheb-PRD-a8e01d5e3-4e799e2d");
+
+            //create a service client
+            FindingServicePortType serviceClient = FindingServiceClientFactory.getServiceClient(config);
+
+            //create request object
+            FindItemsAdvancedRequest request = new FindItemsAdvancedRequest();
+            //set request parameters
+            request.setKeywords("harry potter phoenix");
+
+//            AspectFilter aspectFilter = new AspectFilter();
+//            aspectFilter.setAspectName("Located");
+//            aspectFilter.getAspectValueName().add("Ukraine");
+//            request.getAspectFilter().add(aspectFilter);
+
+            ItemFilter allItemsFilter = new ItemFilter();
+            allItemsFilter.setName(ItemFilterType.LOCATED_IN);
+            allItemsFilter.getValue().add("UA");
+            allItemsFilter.getValue().add("US");
+            request.getItemFilter().add(allItemsFilter);
+            PaginationInput pi = new PaginationInput();
+            pi.setEntriesPerPage(2000);
+            request.setPaginationInput(pi);
+
+            //call service
+            FindItemsAdvancedResponse result = serviceClient.findItemsAdvanced(request);
+
+            //output result
+            System.out.println("Ack = "+result.getAck());
+            System.out.println("Find " + result.getSearchResult().getCount() + " items." );
+            List<SearchItem> items = result.getSearchResult().getItem();
+            for(SearchItem item : items) {
+                System.out.println(item.getTitle());
+            }
+
         } catch (Exception ex) {
             // handle exception if any
             ex.printStackTrace();
