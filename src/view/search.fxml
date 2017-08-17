@@ -97,22 +97,37 @@
                             <Font size="18.0" />
                         </font>
                     </Label>
-                    <CheckBox layoutX="50.0" layoutY="35.0" mnemonicParsing="false" text="Tìm kiếm sản phẩn từ : ">
-                        <font>
-                            <Font size="14.0" />
-                        </font>
-                    </CheckBox>
-                    <TextField fx:id="tfPriceFrom" layoutX="220.0" layoutY="30.0" prefHeight="30.0" prefWidth="128.0">
-                        <font>
-                            <Font size="14.0" />
-                        </font>
-                    </TextField>
-                    <Label layoutX="350.0" layoutY="35.0" text="Đến ">
+                    <Label layoutX="50.0" layoutY="35.0" text="Type Money">
                         <font>
                             <Font size="14.0" />
                         </font>
                     </Label>
-                    <TextField fx:id="tfPriceTo" layoutX="378.0" layoutY="30.0" prefHeight="30.0" prefWidth="128.0">
+                    <ComboBox fx:id="cbbTypePrice" onAction="#typeMoneySelected" layoutX="130.0" layoutY="30.0" prefWidth="70.0" prefHeight="30.0">
+                        <items>
+                            <FXCollections fx:factory="observableArrayList">
+                                <String fx:value="USD" />
+                                <String fx:value="EUR" />
+                                <String fx:value="HKD" />
+                                <String fx:value="VND" />
+                            </FXCollections>
+                        </items>
+                    </ComboBox>
+                    <Label layoutX="210.0" layoutY="35.0" mnemonicParsing="false" text="Từ ">
+                        <font>
+                            <Font size="14.0" />
+                        </font>
+                    </Label>
+                    <TextField fx:id="tfPriceFrom" layoutX="230.0" layoutY="30.0" prefHeight="30.0" prefWidth="128.0">
+                        <font>
+                            <Font size="14.0" />
+                        </font>
+                    </TextField>
+                    <Label layoutX="370.0" layoutY="35.0" text="Đến ">
+                        <font>
+                            <Font size="14.0" />
+                        </font>
+                    </Label>
+                    <TextField fx:id="tfPriceTo" layoutX="400.0" layoutY="30.0" prefHeight="30.0" prefWidth="128.0">
                         <font>
                             <Font size="14.0" />
                         </font>
@@ -222,11 +237,11 @@
                             <Font size="18.0" />
                         </font>
                     </Label>
-                    <RadioButton layoutX="50.0" layoutY="50.0" mnemonicParsing="false" text=" Located in">
+                    <Label layoutX="50.0" layoutY="50.0" mnemonicParsing="false" text=" Located in">
                         <font>
                             <Font size="14.0" />
                         </font>
-                    </RadioButton>
+                    </Label>
                     <ScrollPane hbarPolicy="NEVER" layoutX="220.0" layoutY="50.0" prefHeight="100.0" vbarPolicy="ALWAYS">
                         <content>
                             <VBox>

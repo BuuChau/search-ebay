@@ -103,39 +103,64 @@ public class MainController {
             /* Sdung cho mau sac, nha phan phoi, kieu dang*/
             AspectFilter aspectFilter = new AspectFilter();
 
+            // MinPrice and MaxPrice
+            ItemFilter maxPriceFilter = new ItemFilter();
+            maxPriceFilter.setName(ItemFilterType.MAX_PRICE);
+            maxPriceFilter.setParamName("Currency");
+            maxPriceFilter.setParamValue("USD");
+            maxPriceFilter.getValue().add("66");
+            request.getItemFilter().add(maxPriceFilter);
 
-            ItemFilter allItemsFilter;
-            // Condition : New,Used,Unspecified
-            allItemsFilter = new ItemFilter();
-            allItemsFilter.setName(ItemFilterType.CONDITION);
-            allItemsFilter.getValue().add("Unspecified");
-            request.getItemFilter().add(allItemsFilter);
+            ItemFilter minPriceFilter = new ItemFilter();
+            minPriceFilter.setName(ItemFilterType.MIN_PRICE);
+            minPriceFilter.setParamName("Currency");
+            minPriceFilter.setParamValue("USD");
+            minPriceFilter.getValue().add("33");
+            request.getItemFilter().add(minPriceFilter);
 
             // Format : All , Auction , AuctionWithBIN , Classified , FixedPrice , StoreInventory
-            allItemsFilter = new ItemFilter();
-            allItemsFilter.setName(ItemFilterType.LISTING_TYPE);
-            allItemsFilter.getValue().add("All");
-            request.getItemFilter().add(allItemsFilter);
+            ItemFilter formatFilter = new ItemFilter();
+            formatFilter.setName(ItemFilterType.LISTING_TYPE);
+            formatFilter.getValue().add("All");
+            request.getItemFilter().add(formatFilter);
 
-//            allItemsFilter = new ItemFilter();
-//            allItemsFilter.setName(ItemFilterType.HIDE_DUPLICATE_ITEMS);
-//            allItemsFilter.getValue().add("true");
-//            request.getItemFilter().add(allItemsFilter);
-//
-//            allItemsFilter = new ItemFilter();
-//            allItemsFilter.setName(ItemFilterType.LOCAL_PICKUP_ONLY);
-//            allItemsFilter.getValue().add("true");
-//            request.getItemFilter().add(allItemsFilter);
+            // Condition : New,Used,Unspecified
+            ItemFilter conditionFilter = new ItemFilter();
+            conditionFilter.setName(ItemFilterType.CONDITION);
+            conditionFilter.getValue().add("Unspecified");
+            request.getItemFilter().add(conditionFilter);
 
             // Location
-            allItemsFilter = new ItemFilter();
-            allItemsFilter.setName(ItemFilterType.LOCATED_IN);
-            allItemsFilter.getValue().add("UA");
-            request.getItemFilter().add(allItemsFilter);
+            ItemFilter locationFilter = new ItemFilter();
+            locationFilter.setName(ItemFilterType.LOCATED_IN);
+            locationFilter.getValue().add("UA");
+            request.getItemFilter().add(locationFilter);
 
-//            PaginationInput pi = new PaginationInput();
-//            pi.setEntriesPerPage(20000);
-//            request.setPaginationInput(pi);
+            // Sort By
+            request.setSortOrder(SortOrderType.valueOf("BEST_MATCH"));
+
+            // Result Per Page
+            PaginationInput pi = new PaginationInput();
+            pi.setEntriesPerPage(100);
+            request.setPaginationInput(pi);
+
+            // Sold
+            ItemFilter soldFilter = new ItemFilter();
+            soldFilter.setName(ItemFilterType.SOLD_ITEMS_ONLY);
+            soldFilter.getValue().add("true");
+            request.getItemFilter().add(soldFilter);
+
+            // Sold
+            ItemFilter feedbackMinFilter = new ItemFilter();
+            feedbackMinFilter.setName(ItemFilterType.FEEDBACK_SCORE_MIN);
+            feedbackMinFilter.getValue().add("10000");
+            request.getItemFilter().add(feedbackMinFilter);
+
+            ItemFilter feedbackMaxFilter = new ItemFilter();
+            feedbackMaxFilter.setName(ItemFilterType.SOLD_ITEMS_ONLY);
+            feedbackMaxFilter.getValue().add("20000");
+            request.getItemFilter().add(feedbackMaxFilter);
+
 
 
             //call service

@@ -60,20 +60,34 @@ public class SearchController {
     /**
      * Price
      */
+
+    @FXML
+    ComboBox cbbTypePrice;
     @FXML
     TextField tfPriceFrom;
     @FXML
     TextField tfPriceTo;
 
     private void initPrice(){
-        if (InitCommon.price.getFrom() != null)
+        String type = null;
+        if (InitCommon.price.getFrom() != null && InitCommon.price.getTypeMoney() != null && InitCommon.price.getTo() != null){
+            cbbTypePrice.getSelectionModel().select(InitCommon.price.getFrom().toString());
             tfPriceFrom.setText(InitCommon.price.getFrom().toString());
-        if (InitCommon.price.getTo() != null)
             tfPriceTo.setText(InitCommon.price.getTo().toString());
+        } else {
+            cbbTypePrice.getSelectionModel().selectFirst();
+            type = cbbTypePrice.getValue().toString();
+        }
 
-        tfPriceFrom.textProperty().addListener((observable, oldValue, newValue) -> InitCommon.price = new Price(newValue,tfPriceTo.getText()));
+        String finalType1 = type;
+        tfPriceFrom.textProperty().addListener((observable, oldValue, newValue) -> InitCommon.price = new Price(finalType1,newValue,tfPriceTo.getText()));
+        String finalType = type;
+        tfPriceTo.textProperty().addListener((observable, oldValue, newValue) -> InitCommon.price = new Price(finalType,tfPriceFrom.getText(),newValue));
+    }
 
-        tfPriceTo.textProperty().addListener((observable, oldValue, newValue) -> InitCommon.price = new Price(tfPriceFrom.getText(),newValue));
+    @FXML
+    private void typeMoneySelected(){
+        InitCommon.price = new Price(cbbCategory.getSelectionModel().getSelectedItem().toString(),tfPriceFrom.getText(),tfPriceTo.getText());
     }
 
     /**
