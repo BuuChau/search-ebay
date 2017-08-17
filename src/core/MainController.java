@@ -82,6 +82,7 @@ public class MainController {
         try {
             // initialize service end-point configuration
             ClientConfig config = new ClientConfig();
+            config.setGlobalId("EBAY-SG");
             // endpoint address can be overwritten here, by default, production address is used,
             // to enable sandbox endpoint, just uncomment the following line
             //config.setEndPointAddress("http://svcs.sandbox.ebay.com/services/search/FindingService/v1");
@@ -92,22 +93,50 @@ public class MainController {
 
             //create request object
             FindItemsAdvancedRequest request = new FindItemsAdvancedRequest();
+
             //set request parameters
             request.setKeywords("harry potter phoenix");
+            /*** Check category * */
+            request.getCategoryId().add("1");
+            request.setDescriptionSearch(true);
 
-//            AspectFilter aspectFilter = new AspectFilter();
-//            aspectFilter.setAspectName("Located");
-//            aspectFilter.getAspectValueName().add("Ukraine");
-//            request.getAspectFilter().add(aspectFilter);
+            /* Sdung cho mau sac, nha phan phoi, kieu dang*/
+            AspectFilter aspectFilter = new AspectFilter();
 
-            ItemFilter allItemsFilter = new ItemFilter();
+
+            ItemFilter allItemsFilter;
+            // Condition : New,Used,Unspecified
+            allItemsFilter = new ItemFilter();
+            allItemsFilter.setName(ItemFilterType.CONDITION);
+            allItemsFilter.getValue().add("Unspecified");
+            request.getItemFilter().add(allItemsFilter);
+
+            // Format : All , Auction , AuctionWithBIN , Classified , FixedPrice , StoreInventory
+            allItemsFilter = new ItemFilter();
+            allItemsFilter.setName(ItemFilterType.LISTING_TYPE);
+            allItemsFilter.getValue().add("All");
+            request.getItemFilter().add(allItemsFilter);
+
+//            allItemsFilter = new ItemFilter();
+//            allItemsFilter.setName(ItemFilterType.HIDE_DUPLICATE_ITEMS);
+//            allItemsFilter.getValue().add("true");
+//            request.getItemFilter().add(allItemsFilter);
+//
+//            allItemsFilter = new ItemFilter();
+//            allItemsFilter.setName(ItemFilterType.LOCAL_PICKUP_ONLY);
+//            allItemsFilter.getValue().add("true");
+//            request.getItemFilter().add(allItemsFilter);
+
+            // Location
+            allItemsFilter = new ItemFilter();
             allItemsFilter.setName(ItemFilterType.LOCATED_IN);
             allItemsFilter.getValue().add("UA");
-            allItemsFilter.getValue().add("US");
             request.getItemFilter().add(allItemsFilter);
-            PaginationInput pi = new PaginationInput();
-            pi.setEntriesPerPage(2000);
-            request.setPaginationInput(pi);
+
+//            PaginationInput pi = new PaginationInput();
+//            pi.setEntriesPerPage(20000);
+//            request.setPaginationInput(pi);
+
 
             //call service
             FindItemsAdvancedResponse result = serviceClient.findItemsAdvanced(request);
@@ -117,7 +146,7 @@ public class MainController {
             System.out.println("Find " + result.getSearchResult().getCount() + " items." );
             List<SearchItem> items = result.getSearchResult().getItem();
             for(SearchItem item : items) {
-                System.out.println(item.getTitle());
+               // System.out.println(item.getTitle());
             }
 
         } catch (Exception ex) {
