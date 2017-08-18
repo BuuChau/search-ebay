@@ -95,71 +95,71 @@ public class MainController {
             FindItemsAdvancedRequest request = new FindItemsAdvancedRequest();
 
             //set request parameters
-            request.setKeywords("harry potter phoenix");
+            request.setKeywords("10000Lumens XM-L T6 Zoomable Tactical military LED 18650 Flashlight Torch Lamp");
             /*** Check category * */
-            request.getCategoryId().add("1");
+            //request.getCategoryId().add("1");
             request.setDescriptionSearch(true);
 
-            /* Sdung cho mau sac, nha phan phoi, kieu dang*/
-            AspectFilter aspectFilter = new AspectFilter();
-
-            // MinPrice and MaxPrice
-            ItemFilter maxPriceFilter = new ItemFilter();
-            maxPriceFilter.setName(ItemFilterType.MAX_PRICE);
-            maxPriceFilter.setParamName("Currency");
-            maxPriceFilter.setParamValue("USD");
-            maxPriceFilter.getValue().add("66");
-            request.getItemFilter().add(maxPriceFilter);
-
-            ItemFilter minPriceFilter = new ItemFilter();
-            minPriceFilter.setName(ItemFilterType.MIN_PRICE);
-            minPriceFilter.setParamName("Currency");
-            minPriceFilter.setParamValue("USD");
-            minPriceFilter.getValue().add("33");
-            request.getItemFilter().add(minPriceFilter);
-
-            // Format : All , Auction , AuctionWithBIN , Classified , FixedPrice , StoreInventory
-            ItemFilter formatFilter = new ItemFilter();
-            formatFilter.setName(ItemFilterType.LISTING_TYPE);
-            formatFilter.getValue().add("All");
-            request.getItemFilter().add(formatFilter);
-
-            // Condition : New,Used,Unspecified
-            ItemFilter conditionFilter = new ItemFilter();
-            conditionFilter.setName(ItemFilterType.CONDITION);
-            conditionFilter.getValue().add("Unspecified");
-            request.getItemFilter().add(conditionFilter);
-
-            // Location
-            ItemFilter locationFilter = new ItemFilter();
-            locationFilter.setName(ItemFilterType.LOCATED_IN);
-            locationFilter.getValue().add("UA");
-            request.getItemFilter().add(locationFilter);
-
-            // Sort By
-            request.setSortOrder(SortOrderType.valueOf("BEST_MATCH"));
-
-            // Result Per Page
-            PaginationInput pi = new PaginationInput();
-            pi.setEntriesPerPage(100);
-            request.setPaginationInput(pi);
-
-            // Sold
-            ItemFilter soldFilter = new ItemFilter();
-            soldFilter.setName(ItemFilterType.SOLD_ITEMS_ONLY);
-            soldFilter.getValue().add("true");
-            request.getItemFilter().add(soldFilter);
-
-            // Sold
-            ItemFilter feedbackMinFilter = new ItemFilter();
-            feedbackMinFilter.setName(ItemFilterType.FEEDBACK_SCORE_MIN);
-            feedbackMinFilter.getValue().add("10000");
-            request.getItemFilter().add(feedbackMinFilter);
-
-            ItemFilter feedbackMaxFilter = new ItemFilter();
-            feedbackMaxFilter.setName(ItemFilterType.SOLD_ITEMS_ONLY);
-            feedbackMaxFilter.getValue().add("20000");
-            request.getItemFilter().add(feedbackMaxFilter);
+//            /* Sdung cho mau sac, nha phan phoi, kieu dang*/
+//            AspectFilter aspectFilter = new AspectFilter();
+//
+//            // MinPrice and MaxPrice
+//            ItemFilter maxPriceFilter = new ItemFilter();
+//            maxPriceFilter.setName(ItemFilterType.MAX_PRICE);
+//            maxPriceFilter.setParamName("Currency");
+//            maxPriceFilter.setParamValue("USD");
+//            maxPriceFilter.getValue().add("66");
+//            request.getItemFilter().add(maxPriceFilter);
+//
+//            ItemFilter minPriceFilter = new ItemFilter();
+//            minPriceFilter.setName(ItemFilterType.MIN_PRICE);
+//            minPriceFilter.setParamName("Currency");
+//            minPriceFilter.setParamValue("USD");
+//            minPriceFilter.getValue().add("33");
+//            request.getItemFilter().add(minPriceFilter);
+//
+//            // Format : All , Auction , AuctionWithBIN , Classified , FixedPrice , StoreInventory
+//            ItemFilter formatFilter = new ItemFilter();
+//            formatFilter.setName(ItemFilterType.LISTING_TYPE);
+//            formatFilter.getValue().add("All");
+//            request.getItemFilter().add(formatFilter);
+//
+//            // Condition : New,Used,Unspecified
+//            ItemFilter conditionFilter = new ItemFilter();
+//            conditionFilter.setName(ItemFilterType.CONDITION);
+//            conditionFilter.getValue().add("Unspecified");
+//            request.getItemFilter().add(conditionFilter);
+//
+//            // Location
+//            ItemFilter locationFilter = new ItemFilter();
+//            locationFilter.setName(ItemFilterType.LOCATED_IN);
+//            locationFilter.getValue().add("UA");
+//            request.getItemFilter().add(locationFilter);
+//
+//            // Sort By
+//            request.setSortOrder(SortOrderType.valueOf("BEST_MATCH"));
+//
+//            // Result Per Page
+//            PaginationInput pi = new PaginationInput();
+//            pi.setEntriesPerPage(100);
+//            request.setPaginationInput(pi);
+//
+//            // Sold
+//            ItemFilter soldFilter = new ItemFilter();
+//            soldFilter.setName(ItemFilterType.SOLD_ITEMS_ONLY);
+//            soldFilter.getValue().add("true");
+//            request.getItemFilter().add(soldFilter);
+//
+//            // Sold
+//            ItemFilter feedbackMinFilter = new ItemFilter();
+//            feedbackMinFilter.setName(ItemFilterType.FEEDBACK_SCORE_MIN);
+//            feedbackMinFilter.getValue().add("10000");
+//            request.getItemFilter().add(feedbackMinFilter);
+//
+//            ItemFilter feedbackMaxFilter = new ItemFilter();
+//            feedbackMaxFilter.setName(ItemFilterType.SOLD_ITEMS_ONLY);
+//            feedbackMaxFilter.getValue().add("20000");
+//            request.getItemFilter().add(feedbackMaxFilter);
 
 
 
@@ -171,12 +171,30 @@ public class MainController {
             System.out.println("Find " + result.getSearchResult().getCount() + " items." );
             List<SearchItem> items = result.getSearchResult().getItem();
             for(SearchItem item : items) {
-               // System.out.println(item.getTitle());
+                System.err.println(item);
             }
 
         } catch (Exception ex) {
             // handle exception if any
             ex.printStackTrace();
         }
+    }
+
+    private void getItemCategory(){
+
+        // initialize service end-point configuration
+        ClientConfig config = new ClientConfig();
+        config.setGlobalId("EBAY-SG");
+        // endpoint address can be overwritten here, by default, production address is used,
+        // to enable sandbox endpoint, just uncomment the following line
+        //config.setEndPointAddress("http://svcs.sandbox.ebay.com/services/search/FindingService/v1");
+        config.setApplicationId("CUONGNGU-Searcheb-PRD-a8e01d5e3-4e799e2d");
+
+        //create a service client
+        FindingServicePortType serviceClient = FindingServiceClientFactory.getServiceClient(config);
+        FindCompletedItemsRequest categoryRequest = new FindCompletedItemsRequest();
+
+        categoryRequest.setProductId(new ProductId());
+
     }
 }

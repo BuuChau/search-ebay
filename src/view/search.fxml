@@ -97,12 +97,12 @@
                             <Font size="18.0" />
                         </font>
                     </Label>
-                    <Label layoutX="50.0" layoutY="35.0" text="Type Money">
+                    <Label layoutX="50.0" layoutY="35.0" text="Loại">
                         <font>
                             <Font size="14.0" />
                         </font>
                     </Label>
-                    <ComboBox fx:id="cbbTypePrice" onAction="#typeMoneySelected" layoutX="130.0" layoutY="30.0" prefWidth="70.0" prefHeight="30.0">
+                    <ComboBox fx:id="cbbTypePrice" onAction="#typeMoneySelected" layoutX="100.0" layoutY="30.0" prefWidth="70.0" prefHeight="30.0">
                         <items>
                             <FXCollections fx:factory="observableArrayList">
                                 <String fx:value="USD" />
